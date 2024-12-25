@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #1e135b, #5c21a5);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Header Section */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    header .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    header nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    header nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    header nav ul li a:hover {
+      color: #f39c12;
+    }
+
+    /* Task Manager Section */
+    .task-manager {
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .task-input {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .task-input input {
+      width: 75%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    .task-input button {
+      padding: 10px 15px;
+      background-color: #086148;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .task-input button:hover {
+      background-color: #4cae4c;
+    }
+
+    .task-container {
+      margin-top: 2rem;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .task-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .task-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7); /* Dark background */
+  color: white; /* Text color for better visibility */
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Slight shadow */
+}
+
+
+    .task-list li button {
+      background-color: #d9534f;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .task-list li button:hover {
+      background-color: #c9302c;
+    }
+
+    .complete-btn {
+      background-color: #5bc0de;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .complete-btn:hover {
+      background-color: #31b0d5;
+    }
+
+    .celebration {
+      margin-top: 20px;
+      font-size: 30px;
+      color: rgb(245, 8, 8);
+      font-weight: bold;
+      display: none;
+      animation: celebrate 3s ease-out forwards;
+    }
+
+    @keyframes celebrate {
+      0% {
+        opacity: 0;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.5);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <!-- Header Section -->
+    <header>
+      <div class="logo">AURA</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Task Management Section -->
+    <section class="task-manager">
+      <h1>Task Manager</h1>
+      <div class="task-input">
+        <input type="text" id="taskInput" placeholder="Enter a task">
+        <button id="addTaskBtn">Add Task</button>
+      </div>
+      <div class="task-container">
+        <ul class="task-list" id="taskList"></ul>
+      </div>
+      <div id="celebration" class="celebration">🎉 All Tasks Completed! 🎉</div>
+    </section>
+  </div>
+
+  <script>
+    // Select elements
+    const taskInput = document.getElementById('taskInput');
+    const addTaskBtn = document.getElementById('addTaskBtn');
+    const taskList = document.getElementById('taskList');
+    const celebration = document.getElementById('celebration');
+    let score = 0;
+
+    // Function to update the score
+    function updateScore() {
+      const taskItems = taskList.querySelectorAll('li');
+      const completedTasks = taskList.querySelectorAll('li.completed');
+      score = completedTasks.length;
+      if (score === taskItems.length && score !== 0) {
+        celebration.style.display = 'block';
+        setTimeout(() => celebration.style.display = 'none', 3000); // Hide after 3 seconds
+      }
+    }
+
+    // Function to add a task
+    function addTask() {
+      const taskText = taskInput.value.trim();
+      if (taskText === '') {
+        alert('Please enter a task!');
+        return;
+      }
+
+      // Create task item
+      const li = document.createElement('li');
+      li.textContent = taskText;
+
+      // Create complete button
+      const completeBtn = document.createElement('button');
+      completeBtn.textContent = 'Complete';
+      completeBtn.classList.add('complete-btn');
+      completeBtn.onclick = () => {
+        li.classList.add('completed');
+        updateScore();
+      };
+
+      // Create remove button
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = 'Remove';
+      removeBtn.onclick = () => li.remove();
+
+      // Append buttons to the task item
+      li.appendChild(completeBtn);
+      li.appendChild(removeBtn);
+
+      // Append task item to the list
+      taskList.appendChild(li);
+
+      // Clear the input field
+      taskInput.value = '';
+
+      // Update score
+      updateScore();
+    }
+
+    // Add event listener to the add task button
+    addTaskBtn.addEventListener('click', addTask);
+
+    // Allow pressing Enter to add a task
+    taskInput.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+        addTask();
+      }
+    });
+  </script>
+</body>
+</html>

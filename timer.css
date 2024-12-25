@@ -1,0 +1,176 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom right, #1e135b, #5c21a5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Header Section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0.5rem; /* Reduced header padding */
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+header .logo {
+    font-size: 1.6rem; /* Reduced logo size */
+    font-weight: bold;
+    color: #fff;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.2rem; /* Reduced gap between nav items */
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Timer Container */
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.5s ease;
+    font-weight: bold;
+    margin-top: 100px; /* Push the content below the fixed header */
+}
+
+/* Title */
+h1 {
+    font-weight: bolder;
+    margin-bottom: 15px;
+    font-size: 28px;
+    color: #006f72;
+}
+
+/* Timer Display */
+#timerDisplay {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Settings, Background & Music Options */
+.settings, .background-options, .music-options {
+    margin-bottom: 20px;
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    opacity: 0.7;
+}
+
+/* Controls */
+.controls button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #006f72;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.controls button:hover {
+    background-color: #094a4d;
+}
+
+/* Session Type and Count */
+#sessionType {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+#sessionCount {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Feedback Text */
+#feedbackText {
+    font-size: 70px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    color: #1c0027;
+    display: none;
+    margin-top: 20px;
+    position: absolute;  /* Position it absolutely on the screen */
+    top: 50%;            /* Center vertically */
+    left: 50%;           /* Center horizontally */
+    transform: translate(-50%, -50%); /* Offset by half the width and height to truly center it */
+    z-index: 999;        /* Make sure it appears on top of other elements */
+}
+
+/* Background Styles for Different Backgrounds */
+body.default {
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+}
+
+body.beach {
+    background-image: url('beach.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+body.forest {
+    background-image: url('forest.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh; 
+}
+
+body.city {
+    background-image: url('city.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    #timerDisplay {
+        font-size: 36px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    header .logo {
+        font-size: 1.5rem;
+    }
+
+    header nav ul {
+        gap: 1rem;
+    }
+}

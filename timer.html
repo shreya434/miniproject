@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="timer.css">
+</head>
+<body>
+  <div class="main-container">
+    <!-- Header Section -->
+    <header>
+      <div class="logo">AURA</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li> <!-- Link to index.html -->
+          <li><a href="features.html">Features</a></li> <!-- Link to features.html -->
+          <li><a href="about.html">About</a></li> <!-- Link to about.html -->
+          <li><a href="contact.html">Contact</a></li> <!-- Link to contact.html -->
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Pomodoro Timer Content -->
+    <div class="container">
+      <h1>Pomodoro Timer</h1>
+
+      <!-- Timer Display -->
+      <div id="timerDisplay">25:00</div>
+
+      <!-- Work & Break Duration Options -->
+      <div class="settings">
+        <div>
+          <label for="workDuration">Work Duration:</label>
+          <select id="workDuration">
+            <option value="25">25 minutes</option>
+            <option value="30">30 minutes</option>
+            <option value="45">45 minutes</option>
+            <option value="60">1 hour</option>
+            <option value="90">1 hour 30 minutes</option>
+            <option value="120">2 hours</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="breakDuration">Break Duration:</label>
+          <select id="breakDuration">
+            <option value="5">5 minutes</option>
+            <option value="10">10 minutes</option>
+            <option value="15">15 minutes</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Background Options -->
+      <div class="background-options">
+        <label for="backgroundSelect">Choose Background:</label>
+        <select id="backgroundSelect">
+          <option value="default">Default</option>
+          <option value="beach">Beach</option>
+          <option value="forest">Forest</option>
+          <option value="city">City</option>
+        </select>
+      </div>
+
+      <!-- Music Options -->
+      <div class="music-options">
+        <label for="musicSelect">Background Music:</label>
+        <select id="musicSelect">
+          <option value="none">No Music</option>
+          <option value="relaxing">Relaxing Music</option>
+          <option value="focus">Focus Music</option>
+        </select>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button id="startBtn">Start</button>
+        <button id="stopBtn">Stop</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+
+      <!-- Timer Type -->
+      <div id="sessionType">Work</div>
+      <div id="sessionCount">Pomodoro #1</div>
+
+      <!-- Start/Stop Feedback Text -->
+      <div id="feedbackText"></div>
+    </div>
+
+    <!-- Audio Player for Background Music -->
+    <audio id="music" loop>
+      <source id="relaxingMusic" src="relaxing-music.mp3" type="audio/mp3">
+      <source id="focusMusic" src="focus-music.mp3" type="audio/mp3">
+    </audio>
+
+  </div>
+
+  <script src="timer.js"></script>
+</body>
+</html>

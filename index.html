@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Assistant Frontend</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="main-container">
+    <!-- Header Section -->
+    <header>
+      <div class="logo">AURA</div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Your Smart Assistant for Productivity</h1>
+        <p>Unlock the power of AI to boost your efficiency, stay organized, and achieve more.</p>
+        <p>From managing tasks to real-time weather updates, we've got you covered!</p>
+        <button class="cta-button">Get Started</button>
+      </div>
+      <div class="hero-image">
+        <img src="ai3.png" alt="AI Assistant">
+        <div class="stickers">
+          <img src="star2.png" alt="Star Sticker" class="sticker star">
+          <img src="brain1.png" alt="Heart Sticker" class="sticker heart">
+          <img src="bulbb1.png" alt="Lightbulb Sticker" class="sticker lightbulb">
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <h2>Features</h2>
+      <div class="feature-cards">
+        <div class="card">
+          <img src="manager.png" alt="Task Management">
+          <h3>Task Management</h3>
+          <p>Organize and prioritize your daily tasks.</p>
+          <button class="card-button" id="task-btn">Manage Tasks</button>
+        </div>
+        <div class="card">
+          <img src="timer3.gif" alt="Pomodoro Timer">
+          <h3>Pomodoro Timer</h3>
+          <p>Enhance focus with timed work and break sessions.</p>
+          <button class="card-button" id="pomodoro-btn">Start Pomodoro</button>
+        </div>
+        <div class="card">
+          <img src="compare1.png" alt="Price Comparison">
+          <h3>Price Comparison</h3>
+          <p>Compare prices across different platforms to get the best deals.</p>
+          <button class="card-button" id="price-btn">Compare Prices</button>
+        </div>
+        <div class="card">
+          <img src="weather2.png" alt="Weather Updates">
+          <h3>Weather Updates</h3>
+          <p>Get real-time weather information and forecasts.</p>
+          <button class="card-button" id="weather-btn">View Weather</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Navigation actions for the buttons
+    document.getElementById('task-btn').addEventListener('click', () => {
+      window.location.href = 'task.html';
+    });
+
+    document.getElementById('pomodoro-btn').addEventListener('click', () => {
+      window.location.href = 'timer.html';
+    });
+
+    document.getElementById('price-btn').addEventListener('click', () => {
+      window.location.href = 'price.html';
+    });
+
+    document.getElementById('weather-btn').addEventListener('click', () => {
+      window.location.href = 'weather.html';
+    });
+  </script>
+</body>
+</html>

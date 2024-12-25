@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Information</title>
+  <link rel="stylesheet" href="weather.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="main-container">
+    <!-- Header Section -->
+    <header>
+      <div class="logo">AURA</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Weather Section -->
+    <section class="weather">
+      <div class="weather-container">
+        <h1>Weather Information</h1>
+        <div id="weather-info">
+          <!-- Weather information will be displayed here -->
+        </div>
+        <button class="cta-button" onclick="window.location.href='index.html'">Back to Home</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function fetchWeather() {
+      const apiKey = 'f35e00382dc50ab8dd71861ec9b3dd57'; // Replace with your API key
+      const city = 'New York'; // Replace with dynamic input if needed
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.cod === 200) {
+            const weatherDescription = data.weather[0].description;
+            const temperature = data.main.temp;
+            const humidity = data.main.humidity;
+
+            const weatherInfo = `
+              <h3>Weather in ${city}</h3>
+              <p><strong>Description:</strong> ${weatherDescription}</p>
+              <p><strong>Temperature:</strong> ${temperature}°C</p>
+              <p><strong>Humidity:</strong> ${humidity}%</p>
+            `;
+            document.getElementById('weather-info').innerHTML = weatherInfo;
+          } else {
+            document.getElementById('weather-info').innerHTML = '<p>Failed to retrieve weather data. Please try again.</p>';
+          }
+        })
+        .catch(error => {
+          document.getElementById('weather-info').innerHTML = '<p>Error fetching weather data.</p>';
+        });
+    }
+
+    // Fetch weather data on page load
+    window.onload = fetchWeather;
+  </script>
+</body>
+</html>
