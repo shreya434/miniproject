@@ -23,12 +23,12 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
       <div class="hero-content">
         <h1>Your Smart Assistant for Productivity</h1>
         <p>Unlock the power of AI to boost your efficiency, stay organized, and achieve more.</p>
         <p>From managing tasks to real-time weather updates, we've got you covered!</p>
-        <button class="cta-button">Get Started</button>
+        <button class="cta-button" id="get-started-btn">Get Started</button>
       </div>
       <div class="hero-image">
         <img src="ai3.png" alt="AI Assistant">
@@ -47,7 +47,7 @@
         <div class="card">
           <img src="manager.png" alt="Task Management">
           <h3>Task Management</h3>
-          <p>Organize and prioritize your daily tasks.</p>
+          <p>A tool to organize, prioritize, and track your tasks for enhanced productivity.</p>
           <button class="card-button" id="task-btn">Manage Tasks</button>
         </div>
         <div class="card">
@@ -73,6 +73,11 @@
   </div>
 
   <script>
+    // Smooth scroll to Features section when Get Started is clicked
+    document.getElementById('get-started-btn').addEventListener('click', () => {
+      document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+    });
+
     // Navigation actions for the buttons
     document.getElementById('task-btn').addEventListener('click', () => {
       window.location.href = 'task.html';
